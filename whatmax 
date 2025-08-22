@@ -1,0 +1,443 @@
+Hello generate an app using the provided and launche it to playstore, appstore and ios. Below are the codes import { useState } from "react";
+import { Home, MessageCircle, Video, Users, Search, Bell, User, ShoppingBag, Wallet } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { motion } from "framer-motion";
+
+export default function WhatMaxApp() {
+  const [activeTab, setActiveTab] = useState("feed");
+
+  return (
+    <div className="min-h-screen bg-gray-100 flex flex-col">
+      {/* Header */}
+      <header className="bg-white shadow p-4 flex justify-between items-center">
+        <h1 className="text-xl font-bold text-blue-600">WhatMax</h1>
+        <Search className="w-6 h-6 text-gray-600" />
+      </header>
+
+      {/* Main Content */}
+      <main className="flex-1 p-4 space-y-4">
+        {activeTab === "feed" && (
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+            <Card className="rounded-2xl shadow-md">
+              <CardContent className="p-4">
+                <p className="text-gray-800 font-semibold">John Doe</p>
+                <p className="text-sm text-gray-600">Just landed in Nairobi 🚀</p>
+                <img
+                  src="https://source.unsplash.com/600x300/?nairobi"
+                  alt="feed"
+                  className="rounded-xl mt-2"
+                />
+              </CardContent>
+            </Card>
+          </motion.div>
+        )}
+
+        {activeTab === "messages" && (
+          <motion.div initial={{ x: 50, opacity: 0 }} animate={{ x: 0, opacity: 1 }}>
+            <Card className="rounded-2xl shadow-md">
+              <CardContent className="p-4">
+                <p className="font-semibold text-gray-800">Chats</p>
+                <div className="mt-2 space-y-2">
+                  <div className="flex items-center justify-between">
+                    <p>Mary</p>
+                    <span className="text-xs text-gray-500">Hey, how are you?</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <p>David</p>
+                    <span className="text-xs text-gray-500">Are we still meeting?</span>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
+        )}
+
+        {activeTab === "videos" && (
+          <motion.div initial={{ y: 50, opacity: 0 }} animate={{ y: 0, opacity: 1 }}>
+            <Card className="rounded-2xl shadow-md overflow-hidden">
+              <video
+                src="https://www.w3schools.com/html/mov_bbb.mp4"
+                controls
+                className="w-full"
+              />
+              <CardContent>
+                <p className="font-semibold text-gray-800">Trending Video</p>
+                <p className="text-sm text-gray-600">#WhatMax #Fun</p>
+              </CardContent>
+            </Card>
+          </motion.div>
+        )}
+
+        {activeTab === "community" && (
+          <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }}>
+            <Card className="rounded-2xl shadow-md">
+              <CardContent className="p-4">
+                <p className="font-semibold text-gray-800">WhatMax Tech Community</p>
+                <p className="text-sm text-gray-600 mt-1">23,400 members</p>
+                <Button className="mt-2 rounded-xl">Join</Button>
+              </CardContent>
+            </Card>
+          </motion.div>
+        )}
+
+        {activeTab === "notifications" && (
+          <motion.div initial={{ y: -20, opacity: 0 }} animate={{ y: 0, opacity: 1 }}>
+            <Card className="rounded-2xl shadow-md">
+              <CardContent className="p-4 space-y-2">
+                <p className="font-semibold text-gray-800">Notifications</p>
+                <p className="text-sm text-gray-600">Mary liked your post</p>
+                <p className="text-sm text-gray-600">David started following you</p>
+              </CardContent>
+            </Card>
+          </motion.div>
+        )}
+
+        {activeTab === "profile" && (
+          <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }}>
+            <Card className="rounded-2xl shadow-md">
+              <CardContent className="p-4 space-y-2">
+                <img
+                  src="https://source.unsplash.com/100x100/?portrait"
+                  alt="profile"
+                  className="rounded-full w-20 h-20"
+                />
+                <p className="font-semibold text-gray-800">John Doe</p>
+                <p className="text-sm text-gray-600">Content Creator</p>
+                <Button className="mt-2 rounded-xl">Edit Profile</Button>
+              </CardContent>
+            </Card>
+          </motion.div>
+        )}
+
+        {activeTab === "marketplace" && (
+          <motion.div initial={{ x: -30, opacity: 0 }} animate={{ x: 0, opacity: 1 }}>
+            <Card className="rounded-2xl shadow-md">
+              <CardContent className="p-4">
+                <p className="font-semibold text-gray-800 mb-2">Marketplace</p>
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="bg-gray-200 p-2 rounded-xl">
+                    <img
+                      src="https://source.unsplash.com/200x200/?tshirt"
+                      alt="merch"
+                      className="rounded-lg"
+                    />
+                    <p className="text-sm font-semibold">Creator T-Shirt</p>
+                    <p className="text-xs text-gray-600">$20</p>
+                    <Button className="w-full mt-1 rounded-xl">Buy</Button>
+                  </div>
+                  <div className="bg-gray-200 p-2 rounded-xl">
+                    <img
+                      src="https://source.unsplash.com/200x200/?digital-art"
+                      alt="digital"
+                      className="rounded-lg"
+                    />
+                    <p className="text-sm font-semibold">Exclusive Digital Art</p>
+                    <p className="text-xs text-gray-600">$15</p>
+                    <Button className="w-full mt-1 rounded-xl">Buy</Button>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
+        )}
+
+        {activeTab === "wallet" && (
+          <motion.div initial={{ y: 30, opacity: 0 }} animate={{ y: 0, opacity: 1 }}>
+            <Card className="rounded-2xl shadow-md">
+              <CardContent className="p-4 space-y-4">
+                <p className="font-semibold text-gray-800">Wallet</p>
+                <p className="text-sm text-gray-600">Balance: 1,250 Coins</p>
+                <div className="grid grid-cols-3 gap-2">
+                  <Button className="rounded-xl">Top Up</Button>
+                  <Button className="rounded-xl">Send</Button>
+                  <Button className="rounded-xl">Withdraw</Button>
+                </div>
+                <div className="mt-4">
+                  <p className="font-semibold text-gray-800">Recent Transactions</p>
+                  <p className="text-xs text-gray-600">+500 Coins (Top Up)</p>
+                  <p className="text-xs text-gray-600">-200 Coins (Gift Sent)</p>
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
+        )}
+      </main>
+
+      {/* Bottom Navigation */}
+      <nav className="bg-white shadow-md p-2 flex justify-around fixed bottom-0 w-full">
+        <Button variant="ghost" onClick={() => setActiveTab("feed")}> <Home /> </Button>
+        <Button variant="ghost" onClick={() => setActiveTab("messages")}> <MessageCircle /> </Button>
+        <Button variant="ghost" onClick={() => setActiveTab("videos")}> <Video /> </Button>
+        <Button variant="ghost" onClick={() => setActiveTab("community")}> <Users /> </Button>
+        <Button variant="ghost" onClick={() => setActiveTab("notifications")}> <Bell /> </Button>
+        <Button variant="ghost" onClick={() => setActiveTab("profile")}> <User /> </Button>
+        <Button variant="ghost" onClick={() => setActiveTab("marketplace")}> <ShoppingBag /> </Button>
+        <Button variant="ghost" onClick={() => setActiveTab("wallet")}> <Wallet /> </Button>
+      </nav>
+    </div>
+  );
+}
+                              
+import { useState } from "react";
+import { Home, MessageCircle, Video, Users, Search, Bell, User, ShoppingBag, Wallet } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { motion } from "framer-motion";
+
+export default function WhatMaxApp() {
+  const [activeTab, setActiveTab] = useState("feed");
+
+  return (
+    <div className="min-h-screen bg-gray-100 flex flex-col">
+      {/* Header */}
+      <header className="bg-white shadow p-4 flex justify-between items-center">
+        <h1 className="text-xl font-bold text-blue-600">WhatMax</h1>
+        <Search className="w-6 h-6 text-gray-600" />
+      </header>
+
+      {/* Main Content */}
+      <main className="flex-1 p-4 space-y-4">
+        {activeTab === "feed" && (
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+            <Card className="rounded-2xl shadow-md">
+              <CardContent className="p-4">
+                <p className="text-gray-800 font-semibold">John Doe</p>
+                <p className="text-sm text-gray-600">Just landed in Nairobi 🚀</p>
+                <img
+                  src="https://source.unsplash.com/600x300/?nairobi"
+                  alt="feed"
+                  className="rounded-xl mt-2"
+                />
+              </CardContent>
+            </Card>
+          </motion.div>
+        )}
+
+        {activeTab === "messages" && (
+          <motion.div initial={{ x: 50, opacity: 0 }} animate={{ x: 0, opacity: 1 }}>
+            <Card className="rounded-2xl shadow-md">
+              <CardContent className="p-4">
+                <p className="font-semibold text-gray-800">Chats</p>
+                <div className="mt-2 space-y-2">
+                  <div className="flex items-center justify-between">
+                    <p>Mary</p>
+                    <span className="text-xs text-gray-500">Hey, how are you?</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <p>David</p>
+                    <span className="text-xs text-gray-500">Are we still meeting?</span>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
+        )}
+
+        {activeTab === "videos" && (
+          <motion.div initial={{ y: 50, opacity: 0 }} animate={{ y: 0, opacity: 1 }}>
+            <Card className="rounded-2xl shadow-md overflow-hidden">
+              <video
+                src="https://www.w3schools.com/html/mov_bbb.mp4"
+                controls
+                className="w-full"
+              />
+              <CardContent>
+                <p className="font-semibold text-gray-800">Trending Video</p>
+                <p className="text-sm text-gray-600">#WhatMax #Fun</p>
+              </CardContent>
+            </Card>
+          </motion.div>
+        )}
+
+        {activeTab === "community" && (
+          <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }}>
+            <Card className="rounded-2xl shadow-md">
+              <CardContent className="p-4">
+                <p className="font-semibold text-gray-800">WhatMax Tech Community</p>
+                <p className="text-sm text-gray-600 mt-1">23,400 members</p>
+                <Button className="mt-2 rounded-xl">Join</Button>
+              </CardContent>
+            </Card>
+          </motion.div>
+        )}
+
+        {activeTab === "notifications" && (
+          <motion.div initial={{ y: -20, opacity: 0 }} animate={{ y: 0, opacity: 1 }}>
+            <Card className="rounded-2xl shadow-md">
+              <CardContent className="p-4 space-y-2">
+                <p className="font-semibold text-gray-800">Notifications</p>
+                <p className="text-sm text-gray-600">Mary liked your post</p>
+                <p className="text-sm text-gray-600">David started following you</p>
+              </CardContent>
+            </Card>
+          </motion.div>
+        )}
+
+        {activeTab === "profile" && (
+          <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }}>
+            <Card className="rounded-2xl shadow-md">
+              <CardContent className="p-4 space-y-2">
+                <img
+                  src="https://source.unsplash.com/100x100/?portrait"
+                  alt="profile"
+                  className="rounded-full w-20 h-20"
+                />
+                <p className="font-semibold text-gray-800">John Doe</p>
+                <p className="text-sm text-gray-600">Content Creator</p>
+                <Button className="mt-2 rounded-xl">Edit Profile</Button>
+              </CardContent>
+            </Card>
+          </motion.div>
+        )}
+
+        {activeTab === "marketplace" && (
+          <motion.div initial={{ x: -30, opacity: 0 }} animate={{ x: 0, opacity: 1 }}>
+            <Card className="rounded-2xl shadow-md">
+              <CardContent className="p-4">
+                <p className="font-semibold text-gray-800 mb-2">Marketplace</p>
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="bg-gray-200 p-2 rounded-xl">
+                    <img
+                      src="https://source.unsplash.com/200x200/?tshirt"
+                      alt="merch"
+                      className="rounded-lg"
+                    />
+                    <p className="text-sm font-semibold">Creator T-Shirt</p>
+                    <p className="text-xs text-gray-600">$20</p>
+                    <Button className="w-full mt-1 rounded-xl">Buy</Button>
+                  </div>
+                  <div className="bg-gray-200 p-2 rounded-xl">
+                    <img
+                      src="https://source.unsplash.com/200x200/?digital-art"
+                      alt="digital"
+                      className="rounded-lg"
+                    />
+                    <p className="text-sm font-semibold">Exclusive Digital Art</p>
+                    <p className="text-xs text-gray-600">$15</p>
+                    <Button className="w-full mt-1 rounded-xl">Buy</Button>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
+        )}
+
+        {activeTab === "wallet" && (
+          <motion.div initial={{ y: 30, opacity: 0 }} animate={{ y: 0, opacity: 1 }}>
+            <Card className="rounded-2xl shadow-md">
+              <CardContent className="p-4 space-y-4">
+                <p className="font-semibold text-gray-800">Wallet</p>
+                <p className="text-sm text-gray-600">Balance: 1,250 Coins</p>
+                <div className="grid grid-cols-3 gap-2">
+                  <Button className="rounded-xl">Top Up</Button>
+                  <Button className="rounded-xl">Send</Button>
+                  <Button className="rounded-xl">Withdraw</Button>
+                </div>
+                <div className="mt-4">
+                  <p className="font-semibold text-gray-800">Recent Transactions</p>
+                  <p className="text-xs text-gray-600">+500 Coins (Top Up)</p>
+                  <p className="text-xs text-gray-600">-200 Coins (Gift Sent)</p>
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
+        )}
+      </main>
+
+      {/* Bottom Navigation */}
+      <nav className="bg-white shadow-md p-2 flex justify-around fixed bottom-0 w-full">
+        <Button variant="ghost" onClick={() => setActiveTab("feed")}> <Home /> </Button>
+        <Button variant="ghost" onClick={() => setActiveTab("messages")}> <MessageCircle /> </Button>
+        <Button variant="ghost" onClick={() => setActiveTab("videos")}> <Video /> </Button>
+        <Button variant="ghost" onClick={() => setActiveTab("community")}> <Users /> </Button>
+        <Button variant="ghost" onClick={() => setActiveTab("notifications")}> <Bell /> </Button>
+        <Button variant="ghost" onClick={() => setActiveTab("profile")}> <User /> </Button>
+        <Button variant="ghost" onClick={() => setActiveTab("marketplace")}> <ShoppingBag /> </Button>
+        <Button variant="ghost" onClick={() => setActiveTab("wallet")}> <Wallet /> </Button>
+      </nav>
+    </div>
+  );
+}
+                             
+import { useState } from "react";
+import { Home, MessageCircle, Video, Users, Search, Bell, User, ShoppingBag, Wallet } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { motion } from "framer-motion";
+
+export default function WhatMaxApp() {
+  const [activeTab, setActiveTab] = useState("feed");
+
+  return (
+    <div className="min-h-screen bg-gray-100 flex flex-col">
+      {/* Header */}
+      <header className="bg-white shadow p-4 flex justify-between items-center">
+        <h1 className="text-xl font-bold text-blue-600">WhatMax</h1>
+        <Search className="w-6 h-6 text-gray-600" />
+      </header>
+
+      {/* Main Content */}
+      <main className="flex-1 p-4 space-y-4">
+        {activeTab === "feed" && (
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+            <Card className="rounded-2xl shadow-md">
+              <CardContent className="p-4">
+                <p className="text-gray-800 font-semibold">John Doe</p>
+                <p className="text-sm text-gray-600">Just landed in Nairobi 🚀</p>
+                <img
+                  src="https://source.unsplash.com/600x300/?nairobi"
+                  alt="feed"
+                  className="rounded-xl mt-2"
+                />
+              </CardContent>
+            </Card>
+          </motion.div>
+        )}
+
+        {activeTab === "messages" && (
+          <motion.div initial={{ x: 50, opacity: 0 }} animate={{ x: 0, opacity: 1 }}>
+            <Card className="rounded-2xl shadow-md">
+              <CardContent className="p-4">
+                <p className="font-semibold text-gray-800">Chats</p>
+                <div className="mt-2 space-y-2">
+                  <div className="flex items-center justify-between">
+                    <p>Mary</p>
+                    <span className="text-xs text-gray-500">Hey, how are you?</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <p>David</p>
+                    <span className="text-xs text-gray-500">Are we still meeting?</span>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
+        )}
+
+        {activeTab === "videos" && (
+          <motion.div initial={{ y: 50, opacity: 0 }} animate={{ y: 0, opacity: 1 }}>
+            <Card className="rounded-2xl shadow-md overflow-hidden">
+              <video
+                src="https://www.w3schools.com/html/mov_bbb.mp4"
+                controls
+                className="w-full"
+              />
+              <CardContent>
+                <p className="font-semibold text-gray-800">Trending Video</p>
+                <p className="text-sm text-gray-600">#WhatMax #Fun</p>
+              </CardContent>
+            </Card>
+          </motion.div>
+        )}
+
+        {activeTab === "community" && (
+          <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }}>
+            <Card className="rounded-2xl shadow-md">
+              <CardContent className="p-4">
+                <p className="font-semibold text-gray-800">WhatMax Tech Community</p>
+                <p className="text-sm text-gray-600 mt-1">23,400 members</p>
+                <Button className="mt-2 rounded-xl">Join</Button>
+              </CardContent>
+            </Card>
+         
